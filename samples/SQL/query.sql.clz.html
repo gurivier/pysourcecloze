@@ -1,0 +1,9 @@
+<p><kbd>power.html</kbd></p>
+<ol id="query_sql" class="cloze">
+<li>{5:SAC:=SELECT} `{5:SAC:=supplier}`.`{5:SAC:=name}`, COUNT(`{5:SAC:=machine}`.`{5:SAC:=id}`), COUNT(DISTINCT `{5:SAC:=maintenance}`.`{5:SAC:=id}`))</li>
+<li>{5:SAC:=FROM} `{5:SAC:=supplier}`</li>
+<li>JOIN `machine` ON `{5:SAC:=supplier}`.`id` = `{5:SAC:=machine}`.`{5:SAC:=id_supplier}`</li>
+<li>JOIN `maintenance` ON `{5:SAC:=machine}`.`id` = `{5:SAC:=maintenance}`.`{5:SAC:=id_machine}`</li>
+<li>GROUP BY `{5:SAC:=supplier}`.`{5:SAC:=id}` ;</li>
+</ol>
+<script>SourceCloze('query_sql', [6, 8, 4, 7, 2, 11, 2, 4, 8, 8, 7, 11, 7, 11, 10, 8, 2])</script>

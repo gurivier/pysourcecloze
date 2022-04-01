@@ -1,0 +1,14 @@
+[
+    {
+        "points": "1",
+        "patterns": [ ";" ]
+    },
+    {
+        "points": "2",
+        "patterns": [ "{", "}" ]
+    },
+    {
+        "points": "3",
+        "patterns": [ "include", "int", "main", "return", "printf" ]
+    }
+]

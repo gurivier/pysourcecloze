@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Power</title>
+  </head>
+  <body>
+    <h1>Power</h1>
+    <form action="power.php" method="post">
+      <p>Voltage: <input type="number" name="voltage" step="0.1" /> V</p>
+      <p>Current: <input type="number" name="current" step="0.1" />
+        <input id="A" type="radio" name="unit" value="A" checked="checked" />
+        <label for="A" />A</label>
+        <input id="mA" type="radio" name="unit" value="mA" />
+        <label for="mA" />mA</label>
+      </p>
+      <p><input type="submit" value="Power" /></p>
+    </form>
+  </body>
+</html>

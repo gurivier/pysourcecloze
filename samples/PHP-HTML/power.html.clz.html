@@ -1,0 +1,24 @@
+<p>Fill out <kbd>power.html</kbd> bellow:</p>
+<ol id="power_html" class="cloze">
+<li>&lt;!DOCTYPE html&gt;</li>
+<li>&lt;{3:SAC:=html}&gt;</li>
+<li>  &lt;{3:SAC:=head}&gt;</li>
+<li>    &lt;meta charset="utf-8" /&gt;</li>
+<li>    &lt;{3:SAC:=title}&gt;Power&lt;{3:SAC:=/title}&gt;</li>
+<li>  &lt;{3:SAC:=/head}&gt;</li>
+<li>  &lt;{3:SAC:=body}&gt;</li>
+<li>    &lt;{3:SAC:=h1}&gt;Power&lt;{3:SAC:=/h1}&gt;</li>
+<li>    &lt;{5:SAC:=form} {5:SAC:=action}="power.php" method="{5:SAC:=post}"&gt;</li>
+<li>      &lt;p&gt;Voltage: &lt;{5:SAC:=input} {5:SAC:=type}="{6:SAC:=number}" {5:SAC:=name}="{8:SAC:=voltage}" {5:SAC:=step}="0.1" /&gt; V&lt;/p&gt;</li>
+<li>      &lt;p&gt;Current: &lt;{5:SAC:=input} {5:SAC:=type}="{6:SAC:=number}" {5:SAC:=name}="{8:SAC:=current}" {5:SAC:=step}="0.1" /&gt;</li>
+<li>        &lt;{5:SAC:=input} {5:SAC:=id}="A" {5:SAC:=type}="{6:SAC:=radio}" {5:SAC:=name}="{8:SAC:=unit}" value="A" checked="{3:SAC:=checked}" /&gt;</li>
+<li>        &lt;label {5:SAC:=for}="A" /&gt;A&lt;/label&gt;</li>
+<li>        &lt;{5:SAC:=input} {5:SAC:=id}="mA" {5:SAC:=type}="{6:SAC:=radio}" {5:SAC:=name}="{8:SAC:=unit}" value="mA" /&gt;</li>
+<li>        &lt;label {5:SAC:=for}="mA" /&gt;mA&lt;/label&gt;</li>
+<li>      &lt;/p&gt;</li>
+<li>      &lt;p&gt;&lt;{5:SAC:=input} {5:SAC:=type}="{5:SAC:=submit}" value="Power" /&gt;&lt;/p&gt;</li>
+<li>    &lt;/{5:SAC:=form}&gt;</li>
+<li>  &lt;{3:SAC:=/body}&gt;</li>
+<li>&lt;{3:SAC:=/html}&gt;</li>
+</ol>
+<script>SourceCloze('power_html', [4, 4, 5, 6, 5, 4, 2, 3, 4, 6, 4, 5, 4, 6, 4, 7, 4, 5, 4, 6, 4, 7, 4, 5, 2, 4, 5, 4, 4, 7, 3, 5, 2, 4, 5, 4, 4, 3, 5, 4, 6, 4, 5, 5])</script>

@@ -1,0 +1,33 @@
+<p>Fill out <kbd>power.php</kbd> bellow:</p>
+<ol id="power_php" class="cloze">
+<li>&lt;!DOCTYPE {3:SAC:=}3{html:SAC:=}&gt;</li>
+<li>&lt;html&gt;</li>
+<li>    &lt;head&gt;</li>
+<li>        &lt;meta charset="utf-8" /&gt;</li>
+<li>        &lt;title&gt;Power&lt;/title&gt;</li>
+<li>    &lt;/head&gt;</li>
+<li>    &lt;body&gt;</li>
+<li>        &lt;h1&gt;Power&lt;/h1&gt;</li>
+<li>        &lt;?php</li>
+<li></li>
+<li>        {5:SAC:=}5{function:SAC:=} show($text, $val, $unit) {</li>
+<li>            echo '&lt;p&gt;'.$text.' = '.$val.' '.$unit.'&lt;/p&gt;' ;</li>
+<li>        }</li>
+<li></li>
+<li>        $factor = ($_POST['unit'] == 'mA') ? .001 : 1 ;</li>
+<li></li>
+<li>        $V = $_POST['voltage'] ;</li>
+<li>        $I = $_POST['current'] * $factor ;</li>
+<li>        $P = $V * $I ;</li>
+<li></li>
+<li>        show('Voltage', $V, 'V') ;</li>
+<li>        show('Current', $I, 'A') ;</li>
+<li>        show('Power', $P, 'W') ;</li>
+<li></li>
+<li>        ?&gt;</li>
+<li>        &lt;p&gt;&lt;a href="power.html"&gt;Do it again&lt;/a&gt;&lt;/p&gt;</li>
+<li>    &lt;/body&gt;</li>
+<li>&lt;/html&gt;</li>
+<li></li>
+</ol>
+<script>SourceCloze('power_php', [0, 0, 0, 0])</script>

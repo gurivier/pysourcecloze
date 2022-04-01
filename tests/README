@@ -1,0 +1,7 @@
+
+run tests from pysourcecloze dir:
+
+$ cd pysourcecloze/
+$ sh tests/test.sh
+
+

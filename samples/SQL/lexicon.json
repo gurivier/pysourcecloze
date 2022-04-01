@@ -1,0 +1,14 @@
+[
+    {
+        "points": "1",
+        "patterns": [ ";" ]
+    },
+    {
+        "points": "3",
+        "patterns": [ "SELECT", "FROM", "WHERE" ]
+    },
+    {
+        "points": "4",
+        "patterns": [ "JOIN", "ON", "GROUP", "BY", "GROUP BY", "ORDER", "ORDER BY", "ASC", "DESC", "HAVING" ]
+    }
+]

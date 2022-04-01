@@ -1,0 +1,5 @@
+§5§SELECT§ `§5§supplier§`.`§5§name§`, COUNT(`§5§machine§`.`§5§id§`), COUNT(DISTINCT `§5§maintenance§`.`§5§id§`))
+§5§FROM§ `§5§supplier§`
+JOIN `machine` ON `§5§supplier§`.`id` = `§5§machine§`.`§5§id_supplier§`
+JOIN `maintenance` ON `§5§machine§`.`id` = `§5§maintenance§`.`§5§id_machine§`
+GROUP BY `§5§supplier§`.`§5§id§` ;

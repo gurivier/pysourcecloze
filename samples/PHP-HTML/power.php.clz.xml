@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="cloze">
+    <name>
+      <text>power.php</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p><kbd>power.php</kbd></p><ol id="power_php" class="cloze"><li>&lt;!DOCTYPE html&gt;</li><li>&lt;{3:SAC:=html}&gt;</li><li>    &lt;{3:SAC:=head}&gt;</li><li>        &lt;meta charset="utf-8" /&gt;</li><li>        &lt;{3:SAC:=title}&gt;Power&lt;{3:SAC:=/title}&gt;</li><li>    &lt;{3:SAC:=/head}&gt;</li><li>    &lt;{3:SAC:=body}&gt;</li><li>        &lt;{3:SAC:=h1}&gt;Power&lt;{3:SAC:=/h1}&gt;</li><li>        &lt;?php</li><li></li><li>        function show($text, $val, $unit) {2:SAC:={}</li><li>            {5:SAC:=echo} '&lt;p&gt;'.$text.' = '.$val.' '.$unit.'&lt;/p&gt;' {1:SAC:=;}</li><li>        {2:SAC:=}}</li><li></li><li>        $factor = ({8:SAC:=$_POST}['unit'] == 'mA') ? .001 : 1 {1:SAC:=;}</li><li></li><li>        $V = {8:SAC:=$_POST}['voltage'] {1:SAC:=;}</li><li>        $I = {8:SAC:=$_POST}['current'] * {6:SAC:=$factor} {1:SAC:=;}</li><li>        $P = $V {6:SAC:=*} {6:SAC:=$I} {1:SAC:=;}</li><li></li><li>        {7:SAC:=show}('{6:SAC:=Voltage}', {6:SAC:=$V}, '{6:SAC:=V}') {1:SAC:=;}</li><li>        {7:SAC:=show}('{6:SAC:=Current}', {6:SAC:=$I}, '{6:SAC:=A}') {1:SAC:=;}</li><li>        {7:SAC:=show}('{6:SAC:=Power}', {6:SAC:=$P}, '{6:SAC:=W}') {1:SAC:=;}</li><li></li><li>        ?&gt;</li><li>        &lt;p&gt;&lt;{3:SAC:=a} {3:SAC:=href}="power.html"&gt;Do it again&lt;/{3:SAC:=a}&gt;&lt;/p&gt;</li><li>    &lt;{3:SAC:=/body}&gt;</li><li>&lt;{3:SAC:=/html}&gt;</li><li></li></ol><script>SourceCloze('power_php', [4, 4, 5, 6, 5, 4, 2, 3, 1, 4, 1, 1, 6, 1, 6, 1, 6, 7, 1, 1, 2, 1, 4, 7, 2, 1, 1, 4, 7, 2, 1, 1, 4, 5, 2, 1, 1, 1, 4, 1, 5, 5])</script>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+  </question>
+</quiz>
+

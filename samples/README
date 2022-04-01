@@ -1,0 +1,6 @@
+
+run from samples dir:
+
+$ cd pysourcecloze/samples/
+$ sh make_samples.sh
+

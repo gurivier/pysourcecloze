@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<§3§html§>
+    <§3§head§>
+        <meta charset="utf-8" />
+        <§3§title§>Power<§3§/title§>
+    <§3§/head§>
+    <§3§body§>
+        <§3§h1§>Power<§3§/h1§>
+        <?php
+
+        function show($text, $val, $unit) §2§{§
+            §5§echo§ '<p>'.$text.' = '.$val.' '.$unit.'</p>' §1§;§
+        §2§}§
+
+        $factor = (§8§$_POST§['unit'] == 'mA') ? .001 : 1 §1§;§
+
+        $V = §8§$_POST§['voltage'] §1§;§
+        $I = §8§$_POST§['current'] * §6§$factor§ §1§;§
+        $P = $V §6§*§ §6§$I§ §1§;§
+
+        §7§show§('§6§Voltage§', §6§$V§, '§6§V§') §1§;§
+        §7§show§('§6§Current§', §6§$I§, '§6§A§') §1§;§
+        §7§show§('§6§Power§', §6§$P§, '§6§W§') §1§;§
+
+        ?>
+        <p><§3§a§ §3§href§="power.html">Do it again</§3§a§></p>
+    <§3§/body§>
+<§3§/html§>
+
