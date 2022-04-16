@@ -147,7 +147,7 @@ class SourceCloze(object):
 
     @classmethod
     def give_xml_question(cls, type, data_dirpath, html, sourcename, penalty='0.3333333'):
-        with fopen(f'{data_dirpath}/template/question.xml.tpl', 'r') as f:
+        with fopen(os.path.join(data_dirpath, 'template', 'question.xml.tpl'), 'r') as f:
             xml = f.read().format(type=type, sourcename=sourcename, html=html, penalty=penalty)
         return xml
 
@@ -177,7 +177,7 @@ def get_program_parameters(version):
                                    help='get the HTML or XML description embedding instructions and init script for Moodle',
                                    description='get the HTML or XML description that will embed instructions and init script for Moodle (to insert as first question on each page)'),
         'u': subparsers.add_parser('updates', aliases=['u'],
-                                   help='check for program available updates and exit',
+                                   help='check if a new release is available and exit',
                                    add_help=False),
     }
     for p in ('e', 'f', 'c', 's', 'g'):
@@ -224,7 +224,7 @@ def get_program_parameters(version):
 def get_program_paths():
     script_path = os.path.dirname(os.path.realpath(__file__))
     installation_path = os.getenv('PYSOCLZ_INSTALL_DIR', script_path)
-    data_dirpath = f'{installation_path}/data'
+    data_dirpath = os.path.join(installation_path, 'data')
     if not os.path.isdir(data_dirpath):
         eprint('Error: cannot access \'data\' dir.')
         eprint('If you moved or linked \'pysoclz.py\', set the environment variable PYSOCLZ_INSTALL_DIR to the installation directory.')
@@ -242,13 +242,13 @@ def check_for_new_version(cur_version, installation_path):
         if resp:
             new_version = resp.json()['name'].split(' ')[1]
             if new_version > cur_version:
-                print(f'Update available: PySourceCloze {new_version} has been released.\n')
+                print(f'Update available: PySourceCloze release {new_version} is available.\n')
                 print(f'  Upgrade from installation dir:')
                 print(f'    cd {installation_path}')
                 print(f'    git clone https://github.com/gurivier/pysourcecloze.git\n')
                 sys.exit(1)
             else:
-                print(f'PySourceCloze {cur_version} is up to date.')
+                print(f'PySourceCloze {cur_version} is already the lastest release.')
         else:
             from http.client import responses
             eprint(f'Error: could not check for updates: Error {resp.status_code} {responses[resp.status_code]}.')
@@ -285,9 +285,9 @@ def get_ouput_file(args):
             has_question_file = hasattr(args, 'question_file') and args.question_file is not None
             i_lang = args.lang[0].lower()
             i_mode = args.output_mode[0].lower()
-            path = os.path.dirname(args.question_file[0]) + '/' if has_question_file else ''
+            path = os.path.dirname(args.question_file[0]) if has_question_file else '.'
             name = ntpath.basename(args.question_file[0]).split('.')[0] if has_question_file else 'sourcecloze'
-            output_filename = f'{path}{name}-instructions-{i_lang}.ini.{i_mode}.new'
+            output_filename = os.path.join(path, f'{name}-instructions-{i_lang}.ini.{i_mode}.new')
         elif args.command in ('g', 'generate'):
             source_filename = args.source_file[0].removesuffix('.clo')
             mode = args.output_mode[0].split('-')[0].lower()

@@ -22,7 +22,7 @@ _Optimize correction time; offer more training sessions to your students beyond 
   * PySourceCloze has been tested on Moodle versions 3.1 LTS, 3.5 LTS, 3.6, 3.9 LTS, and 4.0 beta.
 
 * Firefox or Safe Exam Browser:
-  * PySourceCloze has been tested on Firefox 78 and 98.
+  * PySourceCloze has been tested on Firefox versions 78 and 98.
 
 ### Installation
 
@@ -56,6 +56,10 @@ Documentation is released under the [CC BY-SA 4.0](https://creativecommons.org/l
 
 ## Versions History
 
+* 1.0.1 (2022-04-16)
+  * Lastest version
+    * Fixing one bug with output file path for init command
+    * Getting compatible with Windows paths
 * 1.0.0 (2022-04-01)
   * Initial release
     * Commands: enclose, fill, clean, sum, generate, init, updates
