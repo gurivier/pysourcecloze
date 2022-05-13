@@ -392,7 +392,7 @@ user@host:~/pysourcecloze$ python3 pysoclz.py sum samples/C/main.c.clo
 
 ## STEP 4: Getting Cloze (.clo &#8614; .clz.xml or .clz.html)<a id="getting"/>
 
-PySourceCloze reads a decorated file to **generate** the HTML or XML cloze question for Moodle. The option `-qt QUESTION_FILE`, `--question-text QUESTION_FILE` inserts some HTML code optionally before the cloze.
+PySourceCloze reads a decorated file to **generate** the HTML or XML cloze question for Moodle. The option `-qt QUESTION_FILE`, `--question-text QUESTION_FILE` inserts some HTML code optionally before the cloze; the option `-ei`, `--embed-images` then embed images as base64 code in the HTML code (so that avoiding to import and link images in Moodle).
 
 Examples:
 
@@ -444,7 +444,7 @@ Create a cloze question on Moodle, and edit question text:
 
 ## STEP 6: Embedding Script in Moodle<a id="embedding"/>
 
-An init script is required in Moodle quizzes to **init** source clozes. You will have to embed it **before** all source clozes (see [Step 7](#making)). PySourceCloze embeds both the init script and general filling instructions as a Moodle "description" question when using the init command: the instructions' language is then specified; the option `-qt QUESTION_FILE`, `--question-text QUESTION_FILE` inserts some HTML optionally after general instructions.
+An init script is required in Moodle quizzes to **init** source clozes. You will have to embed it **before** all source clozes (see [Step 7](#making)). PySourceCloze embeds both the init script and general filling instructions as a Moodle "description" question when using the init command: the instructions' language is then specified; the option `-qt QUESTION_FILE`, `--question-text QUESTION_FILE` inserts some HTML optionally after general instructions; the option `-ei`, `--embed-images` then embed images as base64 code in the HTML code (so that avoiding to import and link images in Moodle).
 
 Two ways can get the description that embeds the script and the general instructions:
 * By [importing an XML question file](#embedding-xml);
@@ -454,7 +454,7 @@ Two ways can get the description that embeds the script and the general instruct
 
 1. Get the init instructions in XML format. For example:
 ```console
-user@host:~/pysourcecloze$ python3 pysoclz.py init EN XML -qt samples/PHP-HTML/power_exercise.inc.html 
+user@host:~/pysourcecloze$ python3 pysoclz.py init EN XML -qt samples/PHP-HTML/power_exercise.inc.html -ei
 Output filename: 'samples/PHP-HTML/power_exercise-instructions-en.ini.xml'
 ```
 2. Go at the "Import" function of the "Question bank";

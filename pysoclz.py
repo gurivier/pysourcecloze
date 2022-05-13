@@ -187,6 +187,7 @@ def get_program_parameters(version):
         parsers[p].add_argument('source_file', nargs=1, type=str, help='the source file to read')
     for p in ('g', 'i'):
         parsers[p].add_argument('-qt', '--question-text', dest='question_file', nargs=1, type=str, help='question\'s text file in raw HTML code')
+        parsers[p].add_argument('-ei', '--embed-images', action='store_true', default=False, help='embed questions\' images content in the raw HTML code')
     parsers['f'].add_argument('outers_points', nargs=1, type=str, help='points given for patterns out of lexicon')
     parsers['g'].add_argument('output_mode', nargs=1, type=str, help=textwrap.dedent('''\
     output mode
@@ -300,12 +301,27 @@ def get_ouput_file(args):
         output_file = fopen(output_filename, 'w')
     return output_file, output_filename
 
+def embed_images_in_html(line):
+    import filetype
+    import base64
+    img_filenames = re.findall('src="([^"]*)"', line)
+    for img_filename in img_filenames:
+        kind = filetype.guess(img_filename)
+        with open(img_filename, 'rb') as f:
+            im64 = base64.b64encode(f.read())
+            pattern = f'src="{img_filename}"'
+            replace = f'src="data:{kind.mime};charset:utf-8;base64, {im64.decode()}"'
+            line = re.sub(pattern, replace, line)
+    return line
+
 def get_question_file(args):
     has_question_file = hasattr(args, 'question_file') and args.question_file is not None
     question_lines = []
     if has_question_file:
         question_filename = args.question_file[0]
         question_lines = [line.rstrip() for line in fopen(question_filename, 'r')]
+        if args.embed_images:
+            question_lines = [embed_images_in_html(line) for line in question_lines]
     return has_question_file, question_lines
 
 def rename_new_file(output_filename_new, bak=True):

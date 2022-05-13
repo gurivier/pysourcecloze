@@ -12,9 +12,13 @@ python3 ../pysoclz.py generate SQL/query.sql.clo XML-NUMS -qt PHP-HTML/power_que
 
 # PHP-HTML example (XML only)
 
-python3 ../pysoclz.py init EN XML -qt PHP-HTML/power_exercise.inc.html
-python3 ../pysoclz.py generate PHP-HTML/power.html.clo XML-NUMS -qt PHP-HTML/power_question1.inc.html
-python3 ../pysoclz.py generate PHP-HTML/power.php.clo XML-NUMS -qt PHP-HTML/power_question2.inc.html
+cd PHP-HTML
+
+python3 ../../pysoclz.py init EN XML -qt power_exercise.inc.html -ei
+python3 ../../pysoclz.py generate power.html.clo XML-NUMS -qt power_question1.inc.html
+python3 ../../pysoclz.py generate power.php.clo XML-NUMS -qt power_question2.inc.html
+
+cd ..
 
 # Init example (HTML and XML)
 

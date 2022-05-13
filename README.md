@@ -1,7 +1,7 @@
 
 # PySourceCloze
 
-![Python 3.7 | 3.8 | 3.9 | 3.10](https://camo.githubusercontent.com/e8a646f643d9a46c8ea7f83fae2b8a6b80e7f9b4e407c944b2f74ecac6134266/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f507974686f6e2d332e37253230253743253230332e38253230253743253230332e39253230253743253230332e31302d626c75652e737667) ![GPL v3](https://img.shields.io/pypi/l/xeuledoc) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6405587.svg)](https://zenodo.org/record/6405587)
+![Python 3.7 | 3.8 | 3.9 | 3.10](https://camo.githubusercontent.com/e8a646f643d9a46c8ea7f83fae2b8a6b80e7f9b4e407c944b2f74ecac6134266/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f507974686f6e2d332e37253230253743253230332e38253230253743253230332e39253230253743253230332e31302d626c75652e737667) ![GPL v3](https://img.shields.io/pypi/l/xeuledoc) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6545772.svg)](https://zenodo.org/record/6545772)
 
 ![Preview of a source cloze question on Moodle: filling out an HelloWorld program in C language.](./doc/img/pysourcecloze_preview.png)
 
@@ -34,6 +34,10 @@ Releases are available from [releases list](https://github.com/gurivier/pysource
 
 If you move or link \'pysoclz.py\', set the environment variable `PYSOCLZ_INSTALL_DIR` to the installation directory.
 
+#### Dependencies
+
+`pip3 install filetype`
+
 ### Quick Start
 
 Seven steps are detailed on the [Quick Start Guide](./doc/quick_start_guide.md) to create your first source cloze quiz.
@@ -56,15 +60,15 @@ Documentation is released under the [CC BY-SA 4.0](https://creativecommons.org/l
 
 ## Versions History
 
+* 1.1.0 (2022-05-13): Lastest version
+  * New option to embed questions' images as base64 code in HTML code
 * 1.0.1 (2022-04-16)
-  * Lastest version
-    * Fixing one bug with output file path for init command
-    * Getting compatible with Windows paths
-* 1.0.0 (2022-04-01)
-  * Initial release
-    * Commands: enclose, fill, clean, sum, generate, init, updates
-    * Instructions' languages: EN, FR
-    * Samples: C, PHP-HTML, SQL
+  * Fixing one bug with output file path for init command
+  * Getting compatible with Windows paths
+* 1.0.0 (2022-04-01): Initial release
+  * Commands: enclose, fill, clean, sum, generate, init, updates
+  * Instructions' languages: EN, FR
+  * Samples: C, PHP-HTML, SQL
 
 ---
 [![CC BY-SA 4.0](./doc/img/by-sa.png)](https://creativecommons.org/licenses/by-sa/4.0/) Guillaume Rivière, 2022, [ESTIA](https://www.estia.fr), France.
