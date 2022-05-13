@@ -60,7 +60,7 @@ Documentation is released under the [CC BY-SA 4.0](https://creativecommons.org/l
 
 ## Versions History
 
-* 1.1.0 (2022-05-13): Lastest version
+* 1.1.0 (2022-05-13): Latest version
   * New option to embed questions' images as base64 code in HTML code
 * 1.0.1 (2022-04-16)
   * Fixing one bug with output file path for init command
