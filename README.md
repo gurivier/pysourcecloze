@@ -1,7 +1,7 @@
 
 # PySourceCloze
 
-![Python 3.7 | 3.8 | 3.9 | 3.10](https://img.shields.io/badge/Python-3.7%20|%203.8%20|%203.9%20|%203.10-blue.svg) ![GPL v3](https://img.shields.io/pypi/l/xeuledoc) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11242998.svg)](https://zenodo.org/record/11242998)
+![Python 3.7 | 3.8 | 3.9 | 3.10](https://img.shields.io/badge/Python-3.7%20|%203.8%20|%203.9%20|%203.10-red.svg) ![Moodle 3.1 | 3.5 | 3.6, 3.9 | 3.11 | 4.0](https://img.shields.io/badge/Moodle-3.1%20|%203.5%20|%203.6%20|%203.9%20|%203.11%20|%204.0-orange.svg) ![GPL v3](https://img.shields.io/pypi/l/xeuledoc) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6545772.svg)](https://zenodo.org/record/6545772)
 
 ![Preview of a source cloze question on Moodle: filling out an HelloWorld program in C language.](./doc/img/pysourcecloze_preview.png)
 
@@ -60,7 +60,10 @@ Documentation is released under the [CC BY-SA 4.0](https://creativecommons.org/l
 
 ## Versions History
 
-* 1.1.1 (2024-05-22): Latest version
+* 1.2.0 (2024-05-24): Latest version
+  * Enabling case insensitive answers (added in lexicon files and .clo syntax)
+  * New LaTeX output format (TEX) for printing code to fill out on paper sheets
+* 1.1.1 (2024-05-22)
   * Fixing one display bug for widths of input fields with Chrome browsers (Chromium 116)
 * 1.1.0 (2022-05-13)
   * New option to embed questions' images as base64 code in HTML code

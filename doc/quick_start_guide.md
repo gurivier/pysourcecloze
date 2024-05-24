@@ -12,7 +12,7 @@ This page details seven steps to generate your first source cloze quiz:
 
 ## STEP 1: Editing Your Lexicon (.json)<a id="editing"/>
 
-Describe your lexicon in a JSON file.
+Describe your lexicon in a JSON file. The letter case for the patterns is sensitive by default, but it can be set explicitely to "sensitive" or "insensitive".
 
 Three sample examples for C and PHP programs, HTML pages, and SQL queries:
 
@@ -29,7 +29,8 @@ Three sample examples for C and PHP programs, HTML pages, and SQL queries:
     },
     {
         "points": "3",
-        "patterns": [ "include", "int", "main", "return", "printf" ]
+        "case": "sensitive",
+        "patterns": [ "include", "int", "main", "return", "printf", "scanf", "if", "else", "for" ]
     }
 ]
 ```
@@ -47,18 +48,22 @@ Three sample examples for C and PHP programs, HTML pages, and SQL queries:
     },
     {
         "points": "3",
+        "case": "sensitive",
         "patterns": [ "html", "/html", "head", "/head", "title", "/title", "body", "/body", "h1", "/h1", "href" ]
     },
     {
         "points": "5",
+        "case": "sensitive",
         "patterns": [ "form", "input", "type", "name", "submit", "action", "post" ]
     },
     {
         "points": "5",
+        "case": "sensitive",
         "patterns": [ "echo" ]
     },
     {
         "points": "5",
+        "case": "sensitive",
         "patterns": [ "return", "function", "if", "for" ]
     }
 ]
@@ -68,16 +73,24 @@ Three sample examples for C and PHP programs, HTML pages, and SQL queries:
 ```json
 [
     {
-        "points": "1",
-        "patterns": [ ";" ]
-    },
-    {
         "points": "3",
+        "case": "insensitive",
         "patterns": [ "SELECT", "FROM", "WHERE" ]
     },
     {
         "points": "4",
-        "patterns": [ "JOIN", "ON", "GROUP", "BY", "GROUP BY", "ORDER", "ORDER BY", "ASC", "DESC", "HAVING", "" ]
+        "case": "insensitive",
+        "patterns": [ "JOIN", "ON", "GROUP", "BY", "ORDER", "ASC", "DESC", "HAVING", "LIKE" ]
+    },
+    {
+        "points": "4",
+        "case": "insensitive",
+        "patterns": [ "CREATE", "TABLE", "NOT", "NULL", "INT", "VARCHAR", "CHAR", "DATETIME", "PRIMARY", "FOREIGN", "KEY", "DEFAULT" ]
+    },
+    {
+        "points": "4",
+        "case": "insensitive",
+        "patterns": [ "INSERT", "INTO", "VALUES", "MD5" ]
     }
 ]
 ```
@@ -88,9 +101,9 @@ You have to enclose the patterns you wish to evaluate in your source file, using
 
 Three complementary ways can do enclosing:
 
-1. [Manually](#enclosing-manually): By editing your source file to enclose manually evaluated elements with delimiters and assigning points to patterns (i.e., `§pts§pattern§`).
+1. [Manually](#enclosing-manually): By editing your source file to enclose manually evaluated elements with delimiters and assigning points to patterns (i.e., `§pts[i]§pattern§`). Inserting the letter "i" after giving the points is for setting letter case to "insensitive" (default mode is case sensitive).
 
-2. [Semi-automatically](#enclosing-fill): By editing your source file to enclose manually evaluated elements with delimiters and assigning points to patterns (i.e., `§pts§pattern§`) or not (i.e., `§§pattern§`); then running PySourceCloze to automatically **fill** empty points with values from the lexicon and a given value for elements out of the lexicon (i.e., `outer_points`).
+2. [Semi-automatically](#enclosing-fill): By editing your source file to enclose manually evaluated elements with delimiters and assigning points to patterns (i.e., `§pts[i]§pattern§`) or not (i.e., `§[i]§pattern§`); then running PySourceCloze to automatically **fill** empty points with values from the lexicon and a given value for elements out of the lexicon (i.e., `outer_points`). Inserting the letter "i" after giving the points is for setting letter case to "insensitive" (default mode is case sensitive).
 
 3. [Automatically](#enclosing-enclose): By running PySourceCloze to **enclose** lexemes from the lexicon; then checking for unanticipated or unwanted replacements; then refining by adding or removing some enclosings.
 
@@ -120,11 +133,11 @@ Edit your source file to manually enclose evaluated elements: `§pts§pattern§`
 
 #### `query.sql.clo`
 ```
-§5§SELECT§ `§5§supplier§`.`§5§name§`, COUNT(`§5§machine§`.`§5§id§`), COUNT(DISTINCT `§5§maintenance§`.`§5§id§`))
-§5§FROM§ `§5§supplier§`
-JOIN `machine` ON `§5§supplier§`.`id` = `§5§machine§`.`§5§id_supplier§`
-JOIN `maintenance` ON `§5§machine§`.`id` = `§5§maintenance§`.`§5§id_machine§`
-GROUP BY `§5§supplier§`.`§5§id§` ;
+§5i§SELECT§ `§5§supplier§`.`§5§name§`, COUNT(`§5§machine§`.`§5§id§`), COUNT(§4i§DISTINCT§ `§5§maintenance§`.`§5§id§`)
+§5i§FROM§ `§5§supplier§`
+JOIN `machine` §4i§ON§ `§5§supplier§`.`id` = `§5§machine§`.`§5§id_supplier§`
+JOIN `maintenance` §4i§ON§ `§5§machine§`.`id` = `§5§maintenance§`.`§5§id_machine§`
+§4i§GROUP§ BY `§5§supplier§`.`§5§id§`;
 ```
 
 ### Assisted Enclosing<a id="enclosing-fill"/>
@@ -502,4 +515,4 @@ Caution: You will later have to insert this new description as **the first** ite
 You are done!
 
 ---
-[![CC BY-SA 4.0](./img/by-sa.png)](https://creativecommons.org/licenses/by-sa/4.0/) Guillaume Rivière, 2022, [ESTIA](https://www.estia.fr), France.
+[![CC BY-SA 4.0](./img/by-sa.png)](https://creativecommons.org/licenses/by-sa/4.0/) Guillaume Rivière, 2022-2024, [ESTIA](https://www.estia.fr), France.

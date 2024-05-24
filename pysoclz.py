@@ -47,6 +47,9 @@ class SourceCloze(object):
             lexicon = json.load(f)
             for entry in lexicon:
                 points = entry['points']
+                case_insensitive = (entry['case'] == 'insensitive') if ('case' in entry) else False
+                if case_insensitive:
+                    points += 'i'
                 patterns = '|'.join(entry['patterns'])
                 self.lexicon.append((points, patterns))
                 self.all_patterns.extend(entry['patterns'])
@@ -77,9 +80,12 @@ class SourceCloze(object):
         points_lines = []
         for line in lines:
             for points, patterns in self.lexicon:
+                pattern_re = f'{d}i{d}({patterns}){d}'
+                replace_s = f'{d}{points}i{d}\\1{d}'
+                line_i = re.sub(pattern_re, replace_s, line)
                 pattern_re = f'{d}{d}({patterns}){d}'
                 replace_s = f'{d}{points}{d}\\1{d}'
-                line = re.sub(pattern_re, replace_s, line)
+                line = re.sub(pattern_re, replace_s, line_i)
             pattern_re = f'{d}{d}([^{d}]*){d}'
             replace_s = f'{d}{outer_points}{d}\\1{d}'
             line = re.sub(pattern_re, replace_s, line)
@@ -116,12 +122,22 @@ class SourceCloze(object):
 
     def convert_lines_to_cloze(self, lines):
         d = self.delimiter
+        pattern_re = f'{d}([^{d}]*)i{d}([^{d}]*){d}'
+        replace_s = f'{{\\1:SA:=\\2}}'
+        cloze_lines_i = [re.sub(pattern_re, replace_s, line) for line in lines]
         pattern_re = f'{d}([^{d}]*){d}([^{d}]*){d}'
         replace_s = f'{{\\1:SAC:=\\2}}'
-        cloze_lines = [re.sub(pattern_re, replace_s, line) for line in lines]
+        cloze_lines = [re.sub(pattern_re, replace_s, line) for line in cloze_lines_i]
         matches = [match for line in lines for match in re.findall(f'{d}[^{d}]*{d}([^{d}]*){d}', line)]
         sizes = [len(match) for match in matches]
         return cloze_lines, sizes
+
+    def convert_lines_to_latex(self, lines):
+        d = self.delimiter
+        pattern_re = f'{d}([^{d}]*){d}([^{d}]*){d}'
+        replace_s = lambda x: '_'*len(x.group(2))
+        tex_lines = [re.sub(pattern_re, replace_s, line) for line in lines]
+        return tex_lines
 
     def replace_chevrons_to_html(self, lines):
         replacers = ('<', '&lt;'), ('>', '&gt;')
@@ -150,7 +166,13 @@ class SourceCloze(object):
         with fopen(os.path.join(data_dirpath, 'template', 'question.xml.tpl'), 'r') as f:
             xml = f.read().format(type=type, sourcename=sourcename, html=html, penalty=penalty)
         return xml
-
+    
+    @classmethod
+    def give_tex_question(cls, data_dirpath, texcode):
+        with fopen(os.path.join(data_dirpath, 'template', 'question.tex.tpl'), 'r') as f:
+            xml = f.read().format(texcode=texcode)
+        return xml
+    
 def get_program_parameters(version):
     import argparse, textwrap
     parser = argparse.ArgumentParser(description='PySourceCloze generates Moodle clozes from source codes using decorated source files')
@@ -171,8 +193,8 @@ def get_program_parameters(version):
                                    help='show summed points per pattern and distribution among total points',
                                    description='show summed points per pattern in source file and distribution among total points'),
         'g': subparsers.add_parser('generate', aliases=['g'],
-                                   help='generate the HTML or XML cloze question for Moodle',
-                                   description='generate the HTML or XML cloze question for Moodle'),
+                                   help='generate the HTML or XML cloze question for Moodle, or a TEX code for LaTeX',
+                                   description='generate the HTML or XML cloze question for Moodle, or a TEX code for LaTeX'),
         'i': subparsers.add_parser('init', aliases=['i'],
                                    help='get the HTML or XML description embedding instructions and init script for Moodle',
                                    description='get the HTML or XML description that will embed instructions and init script for Moodle (to insert as first question on each page)'),
@@ -195,6 +217,7 @@ def get_program_parameters(version):
       XML-NUMS           numbered cloze question in Moodle XML file structure
       HTML               cloze in raw HTML code
       HTML-NUMS          numbered cloze in raw HTML code
+      TEX                cloze question in LaTeX
     '''))
     parsers['i'].add_argument('lang', nargs=1, type=str, help=textwrap.dedent('''\
     instructions\' version
@@ -395,8 +418,11 @@ def main():
             mode = args.output_mode[0].upper()
             sourcename = ntpath.basename(source_filename).removesuffix('.clo')
             cloze_id = sourcename.replace('.', '_')
-            clozes, sizes = sc.convert_lines_to_cloze(lines)
-            lines = sc.replace_chevrons_to_html(clozes)
+            if mode == 'TEX':
+                tex_lines = sc.convert_lines_to_latex(lines)
+            else:
+                clozes, sizes = sc.convert_lines_to_cloze(lines)
+                lines = sc.replace_chevrons_to_html(clozes)
             if mode == 'XML':
                 html_lines = sc.dress_lines_with_html_pre(lines, cloze_id, sizes)
                 html = f'{os.linesep}'.join(question_lines + html_lines)
@@ -415,6 +441,10 @@ def main():
                 html_lines = sc.dress_lines_with_html_ol(lines, cloze_id, sizes)
                 html = f'{os.linesep}'.join(question_lines + html_lines)
                 put(output_file, html)
+            elif mode == 'TEX':
+                texcode = f'{os.linesep}'.join(tex_lines)
+                tex = sc.give_tex_question(data_dirpath, texcode)
+                put(output_file, tex)
             else:
                 eprint(f'Error: unknown output mode \'{mode}\'')
                 delete_openned_file(output_filename, output_file)

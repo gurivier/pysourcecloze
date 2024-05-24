@@ -1,14 +1,17 @@
 [
     {
         "points": "1",
+        "case": "sensitive",
         "patterns": [ ";" ]
     },
     {
         "points": "2",
+        "case": "sensitive",
         "patterns": [ "{", "}" ]
     },
     {
         "points": "3",
-        "patterns": [ "include", "int", "main", "return", "printf" ]
+        "case": "sensitive",
+        "patterns": [ "include", "int", "main", "return", "printf", "scanf", "if", "else", "for" ]
     }
 ]

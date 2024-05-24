@@ -1,30 +1,37 @@
 [
     {
         "points": "1",
+        "case": "sensitive",
         "patterns": [ ";" ]
     },
     {
         "points": "2",
+        "case": "sensitive",
         "patterns": [ "{", "}" ]
     },
     {
         "points": "3",
+        "case": "sensitive",
         "patterns": [ "html", "/html", "head", "/head", "title", "/title", "body", "/body", "h1", "/h1", "href" ]
     },
     {
         "points": "5",
+        "case": "sensitive",
         "patterns": [ "form", "input", "type", "name", "submit", "action", "post", "get" ]
     },
     {
         "points": "8",
+        "case": "sensitive",
         "patterns": [ "\\$_POST", "\\$_GET" ]
     },
     {
         "points": "5",
+        "case": "sensitive",
         "patterns": [ "echo" ]
     },
     {
         "points": "5",
+        "case": "sensitive",
         "patterns": [ "return", "function", "if", "for" ]
     }
 ]

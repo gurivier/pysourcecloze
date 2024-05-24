@@ -1,5 +1,5 @@
-§5§SELECT§ `§5§supplier§`.`§5§name§`, COUNT(`§5§machine§`.`§5§id§`), COUNT(DISTINCT `§5§maintenance§`.`§5§id§`))
-§5§FROM§ `§5§supplier§`
-JOIN `machine` ON `§5§supplier§`.`id` = `§5§machine§`.`§5§id_supplier§`
-JOIN `maintenance` ON `§5§machine§`.`id` = `§5§maintenance§`.`§5§id_machine§`
-GROUP BY `§5§supplier§`.`§5§id§` ;
+§5i§SELECT§ `§5§supplier§`.`§5§name§`, COUNT(`§5§machine§`.`§5§id§`), COUNT(§4i§DISTINCT§ `§5§maintenance§`.`§5§id§`)
+§5i§FROM§ `§5§supplier§`
+JOIN `machine` §4i§ON§ `§5§supplier§`.`id` = `§5§machine§`.`§5§id_supplier§`
+JOIN `maintenance` §4i§ON§ `§5§machine§`.`id` = `§5§maintenance§`.`§5§id_machine§`
+§4i§GROUP§ BY `§5§supplier§`.`§5§id§`;

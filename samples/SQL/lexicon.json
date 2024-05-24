@@ -1,14 +1,32 @@
 [
     {
-        "points": "1",
-        "patterns": [ ";" ]
-    },
-    {
         "points": "3",
+        "case": "insensitive",
         "patterns": [ "SELECT", "FROM", "WHERE" ]
     },
     {
         "points": "4",
-        "patterns": [ "JOIN", "ON", "GROUP", "BY", "GROUP BY", "ORDER", "ORDER BY", "ASC", "DESC", "HAVING" ]
+        "case": "insensitive",
+        "patterns": [ "JOIN", "ON", "GROUP", "BY", "ORDER", "ASC", "DESC", "HAVING", "LIKE" ]
+    },
+    {
+        "points": "5",
+        "case": "insensitive",
+        "patterns": [ "COUNT", "SUM", "AVG", "MAX", "MIN" ]
+    },
+    {
+        "points": "4",
+        "case": "insensitive",
+        "patterns": [ "CREATE", "TABLE", "NOT", "NULL", "PRIMARY", "FOREIGN", "KEY", "DEFAULT" ]
+    },
+    {
+        "points": "4",
+        "case": "insensitive",
+        "patterns": [ "INT", "VARCHAR", "CHAR", "DATETIME" ]
+    },
+    {
+        "points": "4",
+        "case": "insensitive",
+        "patterns": [ "INSERT", "INTO", "VALUES", "MD5" ]
     }
 ]
