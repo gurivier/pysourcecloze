@@ -1,7 +1,7 @@
 
 # PySourceCloze
 
-![Python 3.7 | 3.8 | 3.9 | 3.10](https://img.shields.io/badge/Python-3.7%20|%203.8%20|%203.9%20|%203.10-red.svg) ![Moodle 3.1 | 3.5 | 3.6, 3.9 | 3.11 | 4.0](https://img.shields.io/badge/Moodle-3.1%20|%203.5%20|%203.6%20|%203.9%20|%203.11%20|%204.0-orange.svg) ![GPL v3](https://img.shields.io/pypi/l/xeuledoc) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6545772.svg)](https://zenodo.org/record/6545772)
+![Python 3.7 | 3.8 | 3.9 | 3.10](https://img.shields.io/badge/Python-3.7%20|%203.8%20|%203.9%20|%203.10-red.svg) ![Moodle 3.1 | 3.5 | 3.6, 3.9 | 3.11 | 4.0](https://img.shields.io/badge/Moodle-3.1%20|%203.5%20|%203.6%20|%203.9%20|%203.11%20|%204.0-orange.svg) ![GPL v3](https://img.shields.io/pypi/l/xeuledoc) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11275003.svg)](https://zenodo.org/record/11275003)
 
 ![Preview of a source cloze question on Moodle: filling out an HelloWorld program in C language.](./doc/img/pysourcecloze_preview.png)
 
